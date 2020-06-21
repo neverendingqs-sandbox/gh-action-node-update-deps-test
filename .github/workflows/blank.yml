@@ -8,6 +8,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: neverendingqs/gh-action-node-update-deps@master
+    - uses: neverendingqs/gh-action-node-update-deps@2ca99fbfbb8e8fec8a7f5bbbb37b84eb89570180
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
