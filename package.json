@@ -1,6 +1,6 @@
 {
   "name": "gh-action-node-update-deps-test",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/neverendingqs-sandbox/gh-action-node-update-deps-test#readme",
   "dependencies": {
-    "lodash": "^4.0.0",
-    "lodash.get": "^4.0.0"
+    "lodash": "^4.17.15",
+    "lodash.get": "^4.4.2"
   }
 }
