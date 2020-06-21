@@ -11,7 +11,3 @@ jobs:
     - uses: neverendingqs/gh-action-node-update-deps@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        git-user-name: haha
-        git-user-email: haha@example.com
-        package-manager: yarn
