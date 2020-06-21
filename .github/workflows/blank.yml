@@ -1,0 +1,11 @@
+name: CI
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: neverendingqs/gh-action-node-update-deps@098c7368b40fbea002b30bb407288ea2ee7c22ad
