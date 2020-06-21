@@ -8,4 +8,4 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: neverendingqs/gh-action-node-update-deps@541a723edb1ef1ac886c12aba88236e840dd4a83
+    - uses: neverendingqs/gh-action-node-update-deps@master
