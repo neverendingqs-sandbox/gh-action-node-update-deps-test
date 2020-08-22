@@ -12,4 +12,4 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: neverendingqs/gh-action-tag-on-npm-version@master
+      - uses: neverendingqs/gh-action-tag-on-npm-version@97ecc0d5576827706c0999c0d234b97e6ddcaf1b
