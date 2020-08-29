@@ -3,7 +3,7 @@ on:
     types: [created]
 
 jobs:
-  ask-stackoverflow:
+  terminal:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
