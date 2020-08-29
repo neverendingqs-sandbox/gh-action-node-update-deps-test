@@ -31,7 +31,7 @@ jobs:
               + '\n```\n';
               
             github.reactions.createForIssueComment({
-              comment_id: context.comment.id,
+              comment_id: context.payload.comment.id,
               owner: context.repo.owner,
               repo: context.repo.repo,
               content: '+1',
