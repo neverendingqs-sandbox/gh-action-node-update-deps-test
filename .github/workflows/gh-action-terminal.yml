@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: '12'
       - id: terminal
-        uses: neverendingqs/gh-action-terminal@cab1b4b
+        uses: neverendingqs/gh-action-terminal@39c805b
         with:
           command-prefix: /term
       - uses: actions/github-script@v3
@@ -29,6 +29,13 @@ jobs:
               + '\n```\n'
               + stdout
               + '\n```\n';
+              
+            github.reactions.createForIssueComment({
+              owner: context.repository.owner.login,
+              repo: context.repository.name,
+              comment_id: context.comment.id,
+              content: '+1',
+            });
             
             github.issues.createComment({
               issue_number: context.issue.number,
