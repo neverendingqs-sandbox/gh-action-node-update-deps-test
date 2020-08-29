@@ -11,3 +11,5 @@ jobs:
         with:
           node-version: '12'
       - uses: neverendingqs/gh-action-terminal@main
+        with:
+          command-prefix: /term
