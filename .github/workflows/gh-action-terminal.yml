@@ -14,6 +14,25 @@ jobs:
         uses: neverendingqs/gh-action-terminal@main
         with:
           command-prefix: /term
-      - run: |
-          echo "exit code: ${{ steps.terminal.outputs.exit-code }}"
-          echo "stdout: ${{ steps.terminal.outputs.stdout }}"
+      - uses: actions/github-script@v3
+        env:
+          COMMAND: ${{ steps.terminal.outputs.command }}
+          EXIT_CODE: ${{ steps.terminal.outputs.exit-code }}
+          STDOUT: ${{ steps.terminal.outputs.stdout }}
+        with:
+          script: |
+            const command = process.env.COMMAND;
+            const exitCode = process.env.EXIT_CODE;
+            const stdout = process.env.STDOUT;
+            
+            const body = `\`${command}\` had an exit code of ${exitCode}:\n\n`
+              + '```\n'
+              + stdout
+              + '```\n';
+            
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body
+            });
