@@ -25,10 +25,10 @@ jobs:
             const exitCode = process.env.EXIT_CODE;
             const stdout = process.env.STDOUT;
             
-            const body = `\`${command}\` had an exit code of ${exitCode}:\n\n`
-              + '```\n'
+            const body = `\`${command}\` had an exit code of ${exitCode}:\n`
+              + '\n```\n'
               + stdout
-              + '```\n';
+              + '\n```\n';
             
             github.issues.createComment({
               issue_number: context.issue.number,
