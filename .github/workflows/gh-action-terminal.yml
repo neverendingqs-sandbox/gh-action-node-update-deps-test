@@ -4,6 +4,7 @@ on:
 
 jobs:
   terminal:
+    if: contains(github.event.comment.html_url, '/pull/')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -11,35 +12,13 @@ jobs:
         with:
           node-version: '12'
       - id: terminal
-        uses: neverendingqs/gh-action-terminal@39c805b
-        with:
-          command-prefix: /term
-      - uses: actions/github-script@v3
+        uses: neverendingqs/gh-action-terminal@main
+      - run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          
+          git commit -am "chore: update after ${COMMAND}."
+          git push
         env:
           COMMAND: ${{ steps.terminal.outputs.command }}
-          EXIT_CODE: ${{ steps.terminal.outputs.exit-code }}
-          STDOUT: ${{ steps.terminal.outputs.stdout }}
-        with:
-          script: |
-            const command = process.env.COMMAND;
-            const exitCode = process.env.EXIT_CODE;
-            const stdout = process.env.STDOUT;
-            
-            const body = `\`${command}\` had an exit code of ${exitCode}:\n`
-              + '\n```\n'
-              + stdout
-              + '\n```\n';
-              
-            github.reactions.createForIssueComment({
-              comment_id: context.payload.comment.id,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              content: '+1',
-            });
-            
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body
-            });
+          
