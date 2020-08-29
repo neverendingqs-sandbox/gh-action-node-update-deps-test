@@ -7,10 +7,9 @@ jobs:
     if: contains(github.event.comment.html_url, '/pull/')
     runs-on: ubuntu-latest
     steps: 
-      - id: get-ref
+      - id: acknowledge
         uses: actions/github-script@v3
         with:
-          result-encoding: string
           script: |
             github.reactions.createForIssueComment({
               comment_id: context.payload.comment.id,
@@ -18,7 +17,11 @@ jobs:
               repo: context.repo.repo,
               content: '+1',
             });
-
+      - id: get-ref
+        uses: actions/github-script@v3
+        with:
+          result-encoding: string
+          script: |
             const response = github.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
