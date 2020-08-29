@@ -19,11 +19,14 @@ jobs:
               content: '+1',
             });
 
-            const { head: { ref } } = github.pulls.get({
+            const response = github.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.payload.comment.id
             });
+            
+            console.log(JSON.stringify(response, null, 2));
+            const { head: { ref } } = response;
             
             return ref;
       - uses: actions/checkout@v2
