@@ -10,6 +10,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - uses: neverendingqs/gh-action-terminal@main
+      - id: terminal
+        uses: neverendingqs/gh-action-terminal@main
         with:
           command-prefix: /term
+      - run: |
+          echo "exit code: ${{ steps.terminal.outputs.exit-code }}"
+          echo "stdout: ${{ steps.terminal.outputs.stdout }}"
