@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: '12'
       - id: terminal
-        uses: neverendingqs/gh-action-terminal@main
+        uses: neverendingqs/gh-action-terminal@cab1b4b
         with:
           command-prefix: /term
       - uses: actions/github-script@v3
