@@ -3,11 +3,32 @@ on:
     types: [created]
 
 jobs:
-  terminal:
+  run-and-update:
     if: contains(github.event.comment.html_url, '/pull/')
     runs-on: ubuntu-latest
-    steps:
+    steps: 
+      - id: get-ref
+        uses: actions/github-script@v3
+        with:
+          result-encoding: string
+          script: |
+            github.reactions.createForIssueComment({
+              comment_id: context.payload.comment.id,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              content: '+1',
+            });
+
+            const { head: { ref } } = github.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.comment.id
+            });
+            
+            return ref;
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ steps.get-ref.outputs.result }}
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
