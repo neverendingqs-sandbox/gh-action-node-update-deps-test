@@ -10,4 +10,4 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - uses: neverendingqs/gh-action-node-update-deps@master
+      - uses: neverendingqs/gh-action-terminal@master
