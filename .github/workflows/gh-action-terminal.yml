@@ -4,10 +4,10 @@ on:
 
 jobs:
   run-and-update:
-    if: contains(github.event.comment.html_url, '/pull/')
+    if: contains(github.event.comment.html_url, '/pull/') && startsWith( github.event.comment.body, '/terminal ' )
     runs-on: ubuntu-latest
     steps: 
-      - id: acknowledge
+      - name: Acknowledge command
         uses: actions/github-script@v3
         with:
           script: |
