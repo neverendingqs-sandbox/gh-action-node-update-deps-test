@@ -27,7 +27,8 @@ jobs:
               repo: context.repo.repo,
               pull_number: context.payload.issue.number
             });
-            console.log(JSON.stringify(response, null, 2));
+            
+            return response.data.head.ref;
       - run: echo ${{ steps.get-ref.outputs.result }}
       - uses: actions/checkout@v2
         with:
