@@ -29,7 +29,6 @@ jobs:
             });
             
             return response.data.head.ref;
-      - run: echo ${{ steps.get-ref.outputs.result }}
       - uses: actions/checkout@v2
         with:
           ref: ${{ steps.get-ref.outputs.result }}
@@ -42,7 +41,7 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           
-          git commit -am "chore: update after ${COMMAND}."
+          git commit -am "chore: update after '${COMMAND}'."
           git push
         env:
           COMMAND: ${{ steps.terminal.outputs.command }}
