@@ -18,6 +18,7 @@ jobs:
               content: '+1',
             });
       - id: get-ref
+        name: Get branch name
         uses: actions/github-script@v3
         with:
           result-encoding: string
