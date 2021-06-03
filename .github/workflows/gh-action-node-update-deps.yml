@@ -14,5 +14,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         bump-version: patch
-        commit-message-prefix: fix
         pr-labels: test
