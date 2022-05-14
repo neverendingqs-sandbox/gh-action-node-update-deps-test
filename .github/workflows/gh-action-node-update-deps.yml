@@ -17,3 +17,4 @@ jobs:
         package-manager: yarn
         target-version: patch
         pre-commit-script: rm package-lock.json
+        github-token: doesn't-work
