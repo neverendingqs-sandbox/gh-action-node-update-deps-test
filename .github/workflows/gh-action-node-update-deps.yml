@@ -16,7 +16,6 @@ jobs:
       with:
         bump-version: patch
         commit-message-prefix: fix
-        pull-request-labels: test
         package-manager: yarn
         target-version: patch
         pre-commit-script: rm package-lock.json
