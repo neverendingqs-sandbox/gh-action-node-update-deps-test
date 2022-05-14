@@ -15,4 +15,4 @@ jobs:
       with:
         bump-version: patch
         commit-message-prefix: fix
-        pr-labels: test
+        pull-request-labels: test
