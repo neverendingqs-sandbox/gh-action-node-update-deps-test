@@ -9,6 +9,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
     - uses: neverendingqs/gh-action-node-update-deps@main
       with:
         bump-version: patch
