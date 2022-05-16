@@ -19,3 +19,4 @@ jobs:
         package-manager: yarn
         target-version: patch
         pre-commit-script: rm package-lock.json
+        npm-check-updates-version: 12.5.12
