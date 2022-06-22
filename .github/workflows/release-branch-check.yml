@@ -1,0 +1,17 @@
+name: Release Branch Check
+
+on:
+  pull_request:
+  
+jobs:
+  check-pr-base:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+
+    steps:
+      - Name: If base branch is 'master', check if pull request branch is 'release/*'
+        if: ${{ github.event.base.ref == 'master' }}
+        run: [[ "$HEAD_BRANCH" =~ ^release/+ ]]
+        env:
+          HEAD_BRANCH: ${{ github.event.head.ref }}
+    
