@@ -10,10 +10,11 @@ jobs:
 
     steps:
       - name: If base branch is 'main', check if pull request branch is 'release/*'
-        if: ${{ github.event.base.ref == 'refs/head/main' }}
+        # if: ${{ github.event.base.ref == 'refs/head/main' }}
         run: |
           echo ${HEAD_BRANCH}
           [[ "$HEAD_BRANCH" =~ ^release/+ ]]
         env:
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
           HEAD_BRANCH: ${{ github.event.head.ref }}
     
