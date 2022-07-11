@@ -10,6 +10,7 @@ jobs:
 
     steps:
       - name: If base branch is 'main', check if pull request branch is 'release/*'
+        if: ${{ github.event.pull_request.base.ref == 'main' }}
         run: |
           if [[ ! "$HEAD_BRANCH" =~ ^release/.+$ ]]; then
             echo "Invalid branch name '${HEAD_BRANCH}'. Only branches prefixed with 'release/' can be merged to 'main'."
