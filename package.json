@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "echo postinstall",
     "test": "echo \"Error: no test  specif  ided\" && exit 1"
   },
   "repository": {
